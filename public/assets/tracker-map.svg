@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 430" fill="none" preserveAspectRatio="xMidYMid slice">
+<defs>
+  <pattern id="smallgrid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0v22" stroke="#6598ab" stroke-opacity=".12"/></pattern>
+  <pattern id="grid" width="88" height="88" patternUnits="userSpaceOnUse"><rect width="88" height="88" fill="url(#smallgrid)"/><path d="M88 0H0v88" stroke="#73a4b3" stroke-opacity=".25"/><path d="M0 3h6M3 0v6" stroke="#7ba5b2" stroke-opacity=".46"/></pattern>
+  <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0v6" stroke="#50868c" stroke-opacity=".46" stroke-width="2"/></pattern>
+  <g id="trees" fill="#25505e" stroke="#46757b" stroke-width="1.2"><path d="m0-9 8 4 2 10-9 7-10-4-2-9z"/><path d="m14-8 7 3 3 8-7 8-7-4-2-6z"/></g>
+</defs>
+<path fill="#10374b" d="M0 0h860v430H0z"/>
+<g stroke="#386773" fill="#244956"><path d="m-12 0 237-10-18 67-44 57-121 38-65-6z"/><path d="m655-10 230 0v198l-63-22-50-60-83-33z"/><path d="m440 372 122-62 124 33 182 1v102H412z"/></g>
+<g stroke="#47737b" opacity=".46" stroke-width="1.5"><path d="M5 41q111 33 204-42M0 62q135 15 202-47M0 85q94 3 191-47M684 6q17 46 89 71t88 81M707 0q22 38 81 61t77 66M461 423q74-89 190-47t215 9M485 429q73-72 166-37t226 6"/></g>
+<g stroke-linejoin="round"><path d="M-40 352 196 253l113-13 83-53 251-34 273-95M134-28l69 135-8 149 118 217M-30 132l226 29 126-35 113-162M652-60l-20 161-34 63 31 114 214 177" stroke="#102937" stroke-width="21"/><path d="M-40 352 196 253l113-13 83-53 251-34 273-95M134-28l69 135-8 149 118 217M-30 132l226 29 126-35 113-162M652-60l-20 161-34 63 31 114 214 177" stroke="#456b79" stroke-width="13"/><path d="m-33 351 230-98 113-13 82-53 251-34 273-95" stroke="#8aafaa" stroke-width="1.5" stroke-dasharray="9 10"/></g>
+<g stroke="#527989" stroke-width="2" fill="#263a5a" stroke-linejoin="round">
+<path d="m244 101 76-19 7 24-49 13 9 29-27 6zM222 181l70-15 6 24-71 15zM311 165l45-32 15 20-46 31zM382 89l85 13-4 25-59-8-3 23-25-4zM485 101l68 8-5 37-69-9z"/>
+<path d="m404 197 59-8 10 52-28 4-5-25-31 6z" stroke="#ee8a78" fill="#68425b"/>
+<path d="m469 211 57-10 4 21-57 10zM362 263l56-16 14 49-18 5-7-27-38 11zM503 266l58-14 12 47-58 16zM664 189l49-19 22 50-51 20zM751 158l70-26 10 26-48 18 10 25-21 8z"/>
+<path d="m60 189 58-7 3 26-59 7zM75 230l57-11 5 23-57 9zM82 375l69-30 15 34-69 30zM309 347l53-22 15 34-53 22zM536 36l62 6-3 26-63-7zM419 33l59 5-3 33-23-2 1-12-35-3z"/>
+</g>
+<g fill="url(#hatch)" stroke="#4a717b"><path d="m332 34 44-28 15 26-42 29zM66 67l41-12 13 42-42 12zM717 291l70-21 14 47-68 20z"/></g>
+<g><use href="#trees" x="243" y="30"/><use href="#trees" x="262" y="53"/><use href="#trees" x="43" y="251"/><use href="#trees" x="692" y="81"/><use href="#trees" x="724" y="96"/><use href="#trees" x="454" y="320"/><use href="#trees" x="473" y="341"/><use href="#trees" x="794" y="370"/></g>
+<rect width="860" height="430" fill="url(#grid)"/>
+</svg>

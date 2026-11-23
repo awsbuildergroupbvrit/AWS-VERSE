@@ -1,0 +1,32 @@
+.tracker { border-block:1px solid var(--line); background:radial-gradient(ellipse at 6% 45%,#11222d77,transparent 57%),#111015; }
+.tracker h2 { margin-bottom:26px; }
+.tracker-layout { display:grid;grid-template-columns:minmax(0,1.9fr) minmax(220px,.75fr);gap:clamp(25px,4.5vw,80px);align-items:center; }
+.tracker-console { --edge:#14273d; padding:9px 10px 8px; background:#569bd0;border:3px solid var(--edge);border-radius:13px 5px 17px 6px; box-shadow:inset 2px 2px #a6dbfa,inset -3px -4px #356996,0 5px #070b10,0 0 0 1px #7097ae;color:#10263a; }
+.tracker-screen { overflow:hidden;border:3px solid #192f48;border-radius:7px 2px 4px 2px;background:#10374b; }
+.tracker-bar { min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:3px 13px;background:#132b42;color:#ceecf5;font:700 .8rem/1.25 var(--mono);letter-spacing:.5px;border-bottom:1px solid #507687; }
+.tracker-bar strong {color:#171b26;background:#ffa263;padding:5px 9px;border:2px solid #151e2b;border-radius:3px;font:800 .87rem/1 var(--head);letter-spacing:.9px;white-space:nowrap;}
+.map-view { position:relative;isolation:isolate;height:clamp(245px,24vw,360px);overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;background-color:#10374b; }
+.map-view.dragging {cursor:grabbing;}
+.map-view:focus-visible{outline:2px solid #ffbd82;outline-offset:-4px}
+.map-stage { position:absolute;inset:-60%;background:url('assets/tracker-map.svg') center / 100% 100% no-repeat;will-change:transform; }
+.map-stage::before {content:"";position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 3px,#092c3a19 3px 4px);pointer-events:none;}
+.map-target {position:absolute;top:50%;left:50%;width:53px;height:53px;transform:translate(-50%,-50%);border:3px solid #ff535a;border-radius:50%;background:radial-gradient(circle,#fff3d6 0 3px,#191c2f 4px 8px,#ff4856 9px 13px,transparent 14px);box-shadow:0 0 0 3px #161e2e,0 0 0 6px #df505963;}
+.map-target::before {content:"";position:absolute;inset:5px;border:2px dashed #ff8780;border-radius:50%;}
+.map-target::after {content:"";position:absolute;inset:-3px;border:2px solid #f76b64;border-radius:50%;animation:venue-radar 2.8s ease-out infinite;}
+@keyframes venue-radar {0%{opacity:.8;transform:scale(.85)}85%,100%{opacity:0;transform:scale(1.8)}}
+.target-label {position:absolute;top:calc(50% + 36px);left:50%;transform:translateX(-50%);text-align:center;background:#0d2034ef;border:1px solid #789cb0;border-radius:2px;padding:6px 12px;color:#f8f1dd;white-space:nowrap;font:800 1.05rem/1.05 var(--head);letter-spacing:.6px;text-transform:uppercase;}
+.map-legend {position:absolute;left:10px;bottom:8px;font:12px/1.2 var(--mono);color:#d3e4e6;background:#10283de0;padding:4px 6px;pointer-events:none;}
+.map-ticks {position:absolute;top:9px;bottom:8px;left:4px;width:7px;pointer-events:none;border-left:1px solid #749aaf99;background:repeating-linear-gradient(transparent 0 11px,#749aaf88 11px 12px);}
+.tracker-deck {display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 2px 1px;}
+.tracker-mascot {height:48px;width:43px;filter:drop-shadow(1px 2px 0 #99d5e5);}
+.map-controls {display:flex;align-items:center;gap:7px;}
+.map-controls button {color:#15202d;border:2px solid #17283c;border-radius:5px;box-shadow:inset 1px 1px #ffdfb7,2px 3px #284861;background:#ffa96e;padding:7px 11px;font:800 1rem/1 var(--head);letter-spacing:.5px;min-height:36px;}
+.map-controls .zoom {background:#9de1cb;min-width:37px;font:700 1.2rem/1 var(--mono);padding:4px;}
+.map-controls button:active {transform:translate(1px,2px);box-shadow:0 1px #274760;}
+.map-controls button:disabled {opacity:.5;cursor:default;}
+.venue-info h3 {font:italic 900 clamp(33px,3.2vw,52px)/.98 var(--display);text-transform:uppercase;letter-spacing:-.6px;color:#faf2e5;}
+.venue-info>p {margin:13px 0 24px;color:#c9c4c9;line-height:1.6;}
+.venue-info .button {display:inline-flex;}
+@media(max-width:780px){.tracker-layout{grid-template-columns:1fr;gap:24px;}.venue-info h3{font-size:2.1rem}.venue-info>p{margin:10px 0 17px}.tracker-console{padding:6px}.tracker-bar{padding:5px 7px}.tracker-mascot{height:41px;width:36px}.map-view{height:255px}}
+@media(max-width:360px){.tracker-bar{font-size:.69rem;gap:4px}.tracker-bar strong{font-size:.72rem}.map-controls{gap:4px}.map-controls button{padding-inline:7px}.map-controls .zoom{min-width:33px}}
+@media(prefers-reduced-motion:reduce){.map-target::after{animation:none}}

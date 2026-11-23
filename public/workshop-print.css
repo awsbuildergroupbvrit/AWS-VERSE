@@ -142,9 +142,50 @@
 .hero-actions .primary:hover { background: #ff89d2; }
 .ribbon {
   container-type: inline-size;
-  background: linear-gradient(100deg, #ff65b3, #f47bc6 32%, #bc9ffa 64%, #80deef);
-  border-block-color: #241229;
-  color: #201123;
+  position: relative;
+  isolation: isolate;
+  background-color: #f33235;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 3px, #74111922 3px 4px),
+    linear-gradient(105deg, #ff4233, #ed242e 52%, #fc392d);
+  border-block-color: #300b10;
+  color: #160b0c;
+}
+.ribbon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent 4%, #38080caa 4% 21%, transparent 21% 49%, #35090e99 49% 79%, transparent 79%);
+  clip-path: inset(60% 0 35%);
+}
+.ribbon-group span {
+  position: relative;
+  text-shadow: -1px 0 #ffe2ac, 1px 1px #900c16;
+}
+.ribbon-group .split-ink {
+  position: absolute;
+  inset: 0;
+  font: inherit;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  color: #18080a;
+  text-shadow: -2px 0 #74d6cf, 2px 0 #ffb451;
+}
+@keyframes type-slip {
+  0%, 73%, 86%, 100% { opacity: 0; transform: none; }
+  74% { opacity: 1; transform: translateX(-5px); clip-path: inset(18% 0 53%); }
+  77% { opacity: 1; transform: translateX(7px); clip-path: inset(53% 0 18%); }
+  80% { opacity: 1; transform: translateX(-3px); clip-path: inset(31% 0 49%); }
+  83% { opacity: 1; transform: translateX(2px); clip-path: inset(64% 0 20%); }
+}
+@keyframes ribbon-tracking {
+  0%, 73%, 84%, 100% { opacity: 0; }
+  74% { opacity: .65; clip-path: inset(23% 0 73%); }
+  77% { opacity: .5; clip-path: inset(62% 0 33%); transform: translateX(3%); }
+  81% { opacity: .4; clip-path: inset(39% 0 58%); transform: translateX(-5%); }
 }
 .ribbon > .ribbon-track { display: flex; width: max-content; min-width: 0; gap: 0; padding: 0; }
 .ribbon-group {
@@ -156,11 +197,12 @@
   min-width: 100cqw;
 }
 .ribbon-group > * { flex: none; margin-inline: clamp(12px,1.25vw,28px); }
-.ribbon-group span { text-shadow: 1px 1px #fecee4; }
 .ribbon-group i { font-size: 1.15rem; }
 @keyframes highlights-scroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: no-preference) {
   body:has(.art.ready) .ribbon-track { animation: highlights-scroll 32s linear infinite; }
+  body:not(.motion-off):has(.art.ready) .split-ink { animation: type-slip 3.8s steps(1,end) infinite; }
+  body:not(.motion-off):has(.art.ready) .ribbon::after { animation: ribbon-tracking 3.8s steps(1,end) infinite; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ribbon > .ribbon-track { height: auto; width: 100%; }

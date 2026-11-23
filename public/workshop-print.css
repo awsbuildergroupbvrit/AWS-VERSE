@@ -115,31 +115,61 @@
   .panel-copy { padding: 14px 20px 22px; }
 }
 
-/* Echo the pink, blue and cyan layers in the wordmark. */
+@font-face {
+  font-family: "Geist Hero";
+  src: url("assets/hero-geist.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+}
+.hero { background: #0b0b0c; font-family: "Geist Hero", Body, sans-serif; }
 .hero-wash {
   background:
-    radial-gradient(ellipse at 8% 22%, #b32b8f36, transparent 43%),
-    radial-gradient(ellipse at 38% 109%, #3144c954, transparent 44%),
-    linear-gradient(90deg, #130e20 4%, #171022 29%, #151020bd 43%, transparent 68%);
+    repeating-linear-gradient(0deg, transparent 0 4px, #0b0a0a25 4px 5px),
+    linear-gradient(90deg, #0d0d0e 9%, #111011 31%, #100e0ed9 40%, transparent 66%);
 }
-.hero .kicker, .hero .meta .icon { color: #83ebff; }
-.hero .kicker i { background: #ff53bc; box-shadow: 3px 2px #414dd5; }
-.hero-copy h2 span {
-  color: #f8ceee;
-  background: linear-gradient(103deg, #ffa4dc 8%, #d6c6ff 60%, #9deaff);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.hero .kicker { color: #e7e3da; }
+.hero .kicker i { background: #ff4338; box-shadow: 3px 2px #7b181a; }
+.hero .meta .icon { color: #ff7665; }
+.hero .meta b { background: #66595a; }
+.hero .hero-copy h2 {
+  font: 790 clamp(25px, 2.15vw, 39px)/1.09 "Geist Hero", Body, sans-serif;
+  letter-spacing: -.055em;
+  color: #faf6ec;
 }
-.hero .meta b { background: #9863ac; }
+.hero-copy h2 span { display: inline-block; position: relative; }
+.hero-copy h2 b {
+  position: absolute;
+  inset: 0;
+  color: #ff453a;
+  font: inherit;
+  letter-spacing: inherit;
+  pointer-events: none;
+  opacity: 0;
+}
+.hero-copy > p { color: #d1ccca; font-weight: 425; }
+.hero-actions .button { font-family: inherit; font-weight: 660; }
 .hero-actions .primary {
-  background: linear-gradient(105deg, #ff6aaf, #f453bb);
-  border-color: #ff9ad2;
-  box-shadow: 2px 3px #5d43b4, 3px 4px #79c7ef;
-  color: #200d24;
+  background: #ff493a;
+  border-color: #ff695b;
+  box-shadow: 3px 3px #771610;
+  color: #190b09;
 }
-.hero-actions .secondary { background: #191525db; border-color: #786387; }
-.hero-actions .secondary:hover { background: #28243a; border-color: #83ebff; }
-.hero-actions .primary:hover { background: #ff89d2; }
+.hero-actions .secondary { background: #191818; border-color: #736863; }
+.hero-actions .secondary:hover { background: #312121; border-color: #ee6a59; }
+.hero-actions .primary:hover { background: #ff6855; }
+.hero .motion { background: #131211e8; border-color: #6c5550; color: #e3dcd1; }
+.seat-sticker strong { text-shadow: 1px 1px #fba175; }
+@media (prefers-reduced-motion: no-preference) {
+  body:not(.motion-off):has(.art.ready) .hero-copy h2 b {
+    animation: headline-tear 4.2s steps(1, end) infinite;
+  }
+}
+@keyframes headline-tear {
+  0%, 76%, 85%, 100% { opacity: 0; transform: none; }
+  77% { opacity: 1; clip-path: inset(19% 0 52%); transform: translateX(-5px); }
+  80% { opacity: 1; clip-path: inset(53% 0 19%); transform: translateX(6px); }
+  83% { opacity: 1; clip-path: inset(32% 0 48%); transform: translateX(-2px); }
+}
 .ribbon {
   container-type: inline-size;
   position: relative;
@@ -210,6 +240,6 @@
   .ribbon-group i, .ribbon-group[aria-hidden] { display: none; }
 }
 @media (max-width: 700px) {
-  .hero-copy { background: radial-gradient(ellipse at 0% 0%,#44213f99,transparent 65%),linear-gradient(145deg,#171020,#141326); }
-  .hero-wash { background: linear-gradient(0deg,#231528,transparent 17%); }
+  .hero-copy { background: #101010; }
+  .hero-wash { background: linear-gradient(0deg,#101010,transparent 17%); }
 }

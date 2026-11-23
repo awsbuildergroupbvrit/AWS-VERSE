@@ -1,0 +1,6 @@
+{
+  "name": "aws-verse",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "22.x" }
+}

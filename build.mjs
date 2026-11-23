@@ -1,7 +1,7 @@
 import {readFile,readdir,writeFile,mkdir,copyFile} from 'node:fs/promises';
 import path from 'node:path';
 const root=new URL('./public/',import.meta.url);
-const types={html:'text/html; charset=utf-8',js:'text/javascript; charset=utf-8',css:'text/css; charset=utf-8',ics:'text/calendar; charset=utf-8',svg:'image/svg+xml',webp:'image/webp',mp4:'video/mp4',ttf:'font/ttf'};
+const types={html:'text/html; charset=utf-8',js:'text/javascript; charset=utf-8',css:'text/css; charset=utf-8',ics:'text/calendar; charset=utf-8',svg:'image/svg+xml',webp:'image/webp',jpg:'image/jpeg',mp4:'video/mp4',ttf:'font/ttf'};
 const assets={};
 for(const file of await readdir(root,{recursive:true,withFileTypes:true})){
   if(!file.isFile())continue;

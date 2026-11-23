@@ -12,7 +12,18 @@
 }
 .wordmark-copy { display: inline-block; width: min(55%, 228px); vertical-align: middle; }
 #register-title:has(.wordmark-copy) { line-height: .7; }
-.overview { isolation: isolate; position: relative; }
+.overview {
+  isolation: isolate;
+  position: relative;
+  background-color: #31202c;
+  background-image:
+    linear-gradient(180deg, rgba(15, 10, 18, .85), rgba(21, 12, 23, .78) 24%, rgba(24, 12, 23, .45) 52%, rgba(23, 12, 22, .52)),
+    url("bgforcards.jpg");
+  background-size: cover, clamp(380px, 54vw, 736px) auto;
+  background-position: center, center 44%;
+  background-repeat: no-repeat, repeat;
+}
+.overview .section-top > p { color: #f1e9ed; }
 .overview .section-top h2 em {
   color: #ff537b;
   text-shadow: -2px 2px #32122e, -3px 3px #469aa7;

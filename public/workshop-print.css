@@ -114,3 +114,60 @@
   .sticker-panel { height: clamp(145px,37vw,194px); }
   .panel-copy { padding: 14px 20px 22px; }
 }
+
+/* Echo the pink, blue and cyan layers in the wordmark. */
+.hero-wash {
+  background:
+    radial-gradient(ellipse at 8% 22%, #b32b8f36, transparent 43%),
+    radial-gradient(ellipse at 38% 109%, #3144c954, transparent 44%),
+    linear-gradient(90deg, #130e20 4%, #171022 29%, #151020bd 43%, transparent 68%);
+}
+.hero .kicker, .hero .meta .icon { color: #83ebff; }
+.hero .kicker i { background: #ff53bc; box-shadow: 3px 2px #414dd5; }
+.hero-copy h2 span {
+  color: #f8ceee;
+  background: linear-gradient(103deg, #ffa4dc 8%, #d6c6ff 60%, #9deaff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .meta b { background: #9863ac; }
+.hero-actions .primary {
+  background: linear-gradient(105deg, #ff6aaf, #f453bb);
+  border-color: #ff9ad2;
+  box-shadow: 2px 3px #5d43b4, 3px 4px #79c7ef;
+  color: #200d24;
+}
+.hero-actions .secondary { background: #191525db; border-color: #786387; }
+.hero-actions .secondary:hover { background: #28243a; border-color: #83ebff; }
+.hero-actions .primary:hover { background: #ff89d2; }
+.ribbon {
+  container-type: inline-size;
+  background: linear-gradient(100deg, #ff65b3, #f47bc6 32%, #bc9ffa 64%, #80deef);
+  border-block-color: #241229;
+  color: #201123;
+}
+.ribbon > .ribbon-track { display: flex; width: max-content; min-width: 0; gap: 0; padding: 0; }
+.ribbon-group {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: max-content;
+  min-width: 100cqw;
+}
+.ribbon-group > * { flex: none; margin-inline: clamp(12px,1.25vw,28px); }
+.ribbon-group span { text-shadow: 1px 1px #fecee4; }
+.ribbon-group i { font-size: 1.15rem; }
+@keyframes highlights-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: no-preference) {
+  body:has(.art.ready) .ribbon-track { animation: highlights-scroll 32s linear infinite; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ribbon > .ribbon-track { height: auto; width: 100%; }
+  .ribbon-group { width: 100%; flex-wrap: wrap; justify-content: center; gap: 6px 0; padding: 8px 0; }
+  .ribbon-group i, .ribbon-group[aria-hidden] { display: none; }
+}
+@media (max-width: 700px) {
+  .hero-copy { background: radial-gradient(ellipse at 0% 0%,#44213f99,transparent 65%),linear-gradient(145deg,#171020,#141326); }
+  .hero-wash { background: linear-gradient(0deg,#231528,transparent 17%); }
+}

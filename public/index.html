@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#100b19"><title>AWS-VERSE | Two-day cloud workshop</title>
 <meta name="description" content="Enter the cloud multiverse on November 27 and 28, 2026. Two days of hands-on AWS labs, cloud challenges and alumni sessions. Only 60 seats available.">
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="preload" href="assets/display.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="verse.css"><link rel="stylesheet" href="workshop-print.css"><link rel="stylesheet" href="tracker.css">
-<link rel="stylesheet" href="intro.css">
+<link rel="stylesheet" href="intro.css"><link rel="stylesheet" href="site-frame.css">
 </head><body>
 <dialog id="site-intro" aria-label="Spider logo intro">
   <video muted playsinline preload="none" aria-label="Glitching spider emblem"></video>
@@ -21,9 +21,15 @@
 <symbol id="cloud" viewBox="0 0 24 24"><path d="M6 18a4 4 0 0 1-1-7.9 7 7 0 0 1 13.4-1.3A4.6 4.6 0 0 1 18 18z"/></symbol>
 <symbol id="code" viewBox="0 0 24 24"><path d="m7 6-6 6 6 6m10-12 6 6-6 6m-4-15-3 18"/></symbol>
 <symbol id="bolt" viewBox="0 0 24 24"><path d="M14 1 3 14h8l-1 9 11-14h-8z"/></symbol>
-</defs></svg>
-<header class="nav"><div class="nav-inner"><a href="#top" class="brand" aria-label="AWS-VERSE home"><svg aria-hidden="true"><use href="#web"/></svg>AWS<span>-VERSE</span></a><nav aria-label="Main navigation"><a href="#tracker">Venue</a><a href="#overview">Overview</a><a href="#guide">Field guide</a></nav><button class="nav-action" data-details><svg class="icon"><use href="#ticket"/></svg> Register</button></div></header>
-<main id="top">
+<symbol id="frame-spider" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="miter"><path d="m22 21-8-5L9 3l1 17 10 5m2-2L8 19l-4-9 1 14 15 4m1-1L8 28 4 42l8-10 9-1m0 0-6 6-1 9 5-8 4-4"/><path transform="translate(48 0) scale(-1 1)" d="m22 21-8-5L9 3l1 17 10 5m2-2L8 19l-4-9 1 14 15 4m1-1L8 28 4 42l8-10 9-1m0 0-6 6-1 9 5-8 4-4"/></g><path fill="currentColor" d="m24 13 4 5-1 5 3 3-2 8-4 7-4-7-2-8 3-3-1-5z"/></symbol></defs></svg>
+<header id="top" class="nav site-header">
+  <div class="nav-inner">
+    <a href="#top" class="frame-brand" aria-label="AWS-VERSE home"><svg aria-hidden="true"><use href="#frame-spider"/></svg><span class="frame-type">AWS-VERSE<b aria-hidden="true">AWS-VERSE</b></span></a>
+    <nav aria-label="Main navigation"><a href="#tracker">Venue</a><a href="#overview">Overview</a><a href="#guide">Field guide</a></nav>
+    <button class="nav-action frame-register" data-details><svg class="icon" aria-hidden="true"><use href="#ticket"/></svg>Register</button>
+  </div>
+</header>
+<main>
 <section class="hero" aria-labelledby="title"><div class="art"><img src="assets/vampirespider.webp" alt="A shadowed Spider-Verse figure drawn in cyan, crimson, and white dots" id="source"><video id="reference" playsinline muted loop preload="auto" src="assets/vampirespider.mp4" aria-hidden="true" hidden></video><canvas id="portrait" aria-hidden="true"></canvas></div><div class="hero-wash"></div>
 <div class="hero-copy"><div class="kicker"><i></i> TWO-DAY CLOUD WORKSHOP</div>
 <h1 id="title" class="wordmark"><img src="assets/aws-verse-wordmark.svg" width="938" height="260" alt="AWS-VERSE"></h1>
@@ -67,6 +73,21 @@
 <article><div class="sticker-panel" aria-hidden="true"><img src="assets/portal-terminal.svg" alt="" width="236" height="150"><span class="ink-slice"></span></div><div class="panel-copy"><h3>Build a student portal</h3><p>Launch an EC2 server, deploy a web app, and connect it to an RDS database. Test it by adding and retrieving student records.</p></div></article>
 <article><div class="sticker-panel" aria-hidden="true"><img src="assets/challenge-cup.svg" alt="" width="236" height="150"><span class="ink-slice"></span></div><div class="panel-copy"><h3>Take the challenge</h3><p>Team up to design an AWS architecture, explain your choices, and put your cloud knowledge to the test in the final quiz.</p></div></article></div></section>
 <section id="guide" class="content guide"><div><div class="eyebrow"><i></i> BEFORE YOU SWING IN</div><h2>Field <em>guide.</em></h2></div><div class="faq"><details open><summary>Who is this workshop for?</summary><p>Students who are curious about cloud computing. We start with AWS fundamentals and build up to a working application over two days.</p></details><details><summary>What should I bring?</summary><p>Bring your laptop and charger. Follow the organizers’ lab-access and student verification instructions before you arrive.</p></details><details><summary>How will the labs work?</summary><p>Work in teams of around four to five with an assigned AWS lab environment. Share the server, database, deployment, and testing roles.</p></details><details><summary>When and where is the workshop?</summary><p>November 27 and 28, 2026, from 9:00 AM to 4:30 PM each day. Both days are in person. The venue is <span data-venue>ENL Block Seminar Hall, Ground Floor, BVRIT Narsapur</span>.</p></details></div></section>
-</main><footer><a class="brand" href="#top"><svg><use href="#web"/></svg>AWS<span>-VERSE</span></a><span>Cloud workshop · 2026</span><a href="#top">Back to top</a></footer>
+</main><footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-poster">
+      <a href="#top" class="footer-brand" aria-label="AWS-VERSE home"><span class="frame-type">AWS-VERSE<b aria-hidden="true">AWS-VERSE</b></span></a>
+      <div class="footer-event">
+        <p class="footer-date">Nov 27–28, 2026</p>
+        <a href="#tracker">ENL Block Seminar Hall<br>BVRIT Narsapur</a>
+      </div>
+    </div>
+    <div class="footer-rail">
+      <span class="footer-caption"><svg aria-hidden="true"><use href="#frame-spider"/></svg>Two-day cloud workshop</span>
+      <nav aria-label="Footer navigation"><a href="#tracker">Venue</a><a href="#overview">Overview</a><a href="#guide">Field guide</a></nav>
+      <a class="footer-top" href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
 <dialog id="details" aria-labelledby="register-title"><div class="dialog-head"><span class="eyebrow">WORKSHOP REGISTRATION</span><button id="close" aria-label="Close registration">×</button></div><h2 id="register-title"><img class="wordmark-copy" src="assets/aws-verse-wordmark.svg" alt="AWS-VERSE"></h2><div id="signup"><span class="pass-sticker" aria-hidden="true">ADMIT ONE</span><p class="seat-note" id="availability">Limited Seats – Only 60 Available!</p><p class="venue-note">November 27–28, 2026 · 9:00 AM–4:30 PM<br><span data-venue>ENL Block Seminar Hall, Ground Floor, BVRIT Narsapur</span></p><form id="signup-form"><label>Full name<input name="name" autocomplete="name" required maxlength="90"></label><label>Email address<input name="email" type="email" autocomplete="email" required maxlength="254"></label><button class="button primary" type="submit"><svg class="icon"><use href="#ticket"/></svg>Register for both days</button></form></div><div id="confirmed" hidden><span class="confirmed-stamp">SEAT CONFIRMED</span><h3>Your workshop pass</h3><div class="paper-pass"><strong id="pass-name"></strong><span>November 27–28 · AWS-VERSE</span><span id="pass-id"></span></div><button class="button primary" id="save-pass">Save pass</button> <a href="aws-verse.ics" download class="button secondary">Add to calendar</a></div><p id="form-status" aria-live="polite"></p></dialog>
 <script src="event-settings.js" defer></script><script src="tracker.js" defer></script><script src="raster.js" defer></script><script src="workshop.js" defer></script><script src="registration.js" defer></script><script src="hero.js" defer></script></body></html>

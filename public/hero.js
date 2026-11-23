@@ -61,4 +61,7 @@ async function startPortrait(){
   new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync()}).observe(canvas);
   document.addEventListener('visibilitychange',sync);
 }
-startPortrait().catch(()=>document.querySelector('#motion').hidden=true);
+const revealPortrait = () => startPortrait().catch(()=>document.querySelector('#motion').hidden=true);
+const entryDialog = document.querySelector('#site-intro');
+if (entryDialog.open) entryDialog.addEventListener('close', revealPortrait, {once:true});
+else revealPortrait();

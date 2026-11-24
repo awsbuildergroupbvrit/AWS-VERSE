@@ -89,5 +89,150 @@
     </div>
   </div>
 </footer>
-<dialog id="details" aria-labelledby="register-title"><div class="dialog-head"><span class="eyebrow">WORKSHOP REGISTRATION</span><button id="close" aria-label="Close registration">×</button></div><h2 id="register-title"><img class="wordmark-copy" src="assets/aws-verse-wordmark.svg" alt="AWS-VERSE"></h2><div id="signup"><span class="pass-sticker" aria-hidden="true">ADMIT ONE</span><p class="seat-note" id="availability">Limited Seats – Only 60 Available!</p><p class="venue-note">November 27–28, 2026 · 9:00 AM–4:30 PM<br><span data-venue>ENL Block Seminar Hall, Ground Floor, BVRIT Narsapur</span></p><form id="signup-form"><label>Full name<input name="name" autocomplete="name" required maxlength="90"></label><label>Email address<input name="email" type="email" autocomplete="email" required maxlength="254"></label><button class="button primary" type="submit"><svg class="icon"><use href="#ticket"/></svg>Register for both days</button></form></div><div id="confirmed" hidden><span class="confirmed-stamp">SEAT CONFIRMED</span><h3>Your workshop pass</h3><div class="paper-pass"><strong id="pass-name"></strong><span>November 27–28 · AWS-VERSE</span><span id="pass-id"></span></div><button class="button primary" id="save-pass">Save pass</button> <a href="aws-verse.ics" download class="button secondary">Add to calendar</a></div><p id="form-status" aria-live="polite"></p></dialog>
-<script src="event-settings.js" defer></script><script src="tracker.js" defer></script><script src="raster.js" defer></script><script src="workshop.js" defer></script><script src="registration.js" defer></script><script src="hero.js" defer></script></body></html>
+<dialog id="details" aria-labelledby="register-title">
+  <div class="dialog-head">
+    <span class="eyebrow">WORKSHOP REGISTRATION</span>
+    <button id="close" aria-label="Close registration">×</button>
+  </div>
+  <h2 id="register-title"><img class="wordmark-copy" src="assets/aws-verse-wordmark.svg" alt="AWS-VERSE"></h2>
+  
+  <div id="signup">
+    <span class="pass-sticker" aria-hidden="true">ADMIT ONE</span>
+    <p class="seat-note" id="availability">Limited Seats – Only 60 Available!</p>
+    <p class="venue-note">November 27–28, 2026 · 9:00 AM–4:30 PM<br><span data-venue>ENL Block Seminar Hall, Ground Floor, BVRIT Narsapur</span></p>
+    
+    <form id="signup-form" novalidate>
+      <div class="form-grid">
+        <!-- Row 1 (Full width): Full Name -->
+        <label class="form-field-full">
+          <span>Full Name <span class="required">*</span></span>
+          <input name="fullName" type="text" autocomplete="name" required minlength="2" maxlength="90" placeholder="e.g. Miles Morales">
+        </label>
+        
+        <!-- Row 2 (Full width): College Email ID -->
+        <label class="form-field-full">
+          <span>College Email ID <span class="required">*</span></span>
+          <input name="collegeEmail" type="email" autocomplete="email" required maxlength="254" placeholder="e.g. 24211a05q3@bvrit.ac.in">
+          <span class="field-hint" id="email-hint">Preferably your @bvrit.ac.in student email</span>
+        </label>
+        
+        <!-- Row 3 (2 columns): Roll Number | Branch -->
+        <label>
+          <span>Roll Number <span class="required">*</span></span>
+          <input name="rollNumber" type="text" autocomplete="off" required maxlength="15" placeholder="e.g. 24211A05Q3" spellcheck="false">
+        </label>
+        
+        <label>
+          <span>Branch <span class="required">*</span></span>
+          <select name="branch" required>
+            <option value="" disabled selected>Select Branch</option>
+            <option value="CSE">CSE</option>
+            <option value="CSM">CSM</option>
+            <option value="CSD">CSD</option>
+            <option value="CSBS">CSBS</option>
+            <option value="AIDS">AIDS</option>
+            <option value="IT">IT</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+            <option value="BME">BME</option>
+            <option value="PHE">PHE</option>
+            <option value="CHE">CHE</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        
+        <!-- Row 4 (2 columns): Year of Study | Section -->
+        <label>
+          <span>Year of Study <span class="required">*</span></span>
+          <select name="yearOfStudy" required>
+            <option value="" disabled selected>Select Year</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+          </select>
+        </label>
+        
+        <label>
+          <span>Section <span class="required">*</span></span>
+          <select name="section" required>
+            <option value="" disabled selected>Select Section</option>
+            <option value="A">Section A</option>
+            <option value="B">Section B</option>
+            <option value="C">Section C</option>
+            <option value="D">Section D</option>
+            <option value="E">Section E</option>
+            <option value="F">Section F</option>
+            <option value="G">Section G</option>
+            <option value="H">Section H</option>
+            <option value="I">Section I</option>
+          </select>
+        </label>
+        
+        <!-- Submit Button Row -->
+        <div class="form-actions">
+          <button class="button primary" type="submit" id="submit-btn">
+            <svg class="icon" aria-hidden="true"><use href="#ticket"/></svg>
+            <span id="submit-btn-text">Lock in your seat</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <div id="confirmed" hidden>
+    <span class="confirmed-stamp">SEAT CONFIRMED</span>
+    <h3>Your workshop pass</h3>
+    
+    <!-- Spider-Verse Styled "ADMIT ONE" Digital Pass Card -->
+    <div class="paper-pass">
+      <div class="pass-header-line">
+        <span class="pass-badge">ADMIT ONE</span>
+        <span class="pass-id-code" id="pass-id"></span>
+      </div>
+      <div class="pass-attendee-name" id="pass-name"></div>
+      <div class="pass-grid">
+        <div class="pass-cell">
+          <small>ROLL NUMBER</small>
+          <span class="roll-highlight" id="pass-roll"></span>
+        </div>
+        <div class="pass-cell">
+          <small>BRANCH &amp; SECTION</small>
+          <span id="pass-dept"></span>
+        </div>
+        <div class="pass-cell">
+          <small>YEAR OF STUDY</small>
+          <span id="pass-year"></span>
+        </div>
+        <div class="pass-cell">
+          <small>EVENT</small>
+          <span>AWS-VERSE (2-Day Labs)</span>
+        </div>
+      </div>
+      <div class="pass-footer-line">
+        <div><strong>Date:</strong> November 27–28, 2026 · 9:00 AM–4:30 PM</div>
+        <div><strong>Venue:</strong> <span data-venue>ENL Block Seminar Hall, Ground Floor, BVRIT Narsapur</span></div>
+      </div>
+    </div>
+    
+    <div class="pass-notice" id="pass-email-notice">
+      A digital copy of this pass has been dispatched to <strong id="pass-email-target">your college email</strong>.
+    </div>
+    
+    <div class="pass-buttons">
+      <button class="button primary" id="save-pass"><svg class="icon" aria-hidden="true"><use href="#ticket"/></svg>Save pass (PNG)</button>
+      <a href="aws-verse.ics" download class="button secondary"><svg class="icon" aria-hidden="true"><use href="#calendar"/></svg>Add to calendar</a>
+    </div>
+  </div>
+  
+  <p id="form-status" aria-live="polite"></p>
+</dialog>
+<script src="email.min.js"></script>
+<script src="event-settings.js" defer></script>
+<script src="tracker.js" defer></script>
+<script src="raster.js" defer></script>
+<script src="workshop.js" defer></script>
+<script src="registration.js" defer></script>
+<script src="hero.js" defer></script></body></html>

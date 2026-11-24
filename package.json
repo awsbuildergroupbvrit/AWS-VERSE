@@ -2,5 +2,10 @@
   "name": "aws-verse",
   "private": true,
   "type": "module",
-  "engines": { "node": "22.x" }
+  "engines": {
+    "node": "22.x"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^5.0.3"
+  }
 }

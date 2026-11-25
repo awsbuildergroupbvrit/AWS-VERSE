@@ -1,4 +1,4 @@
-const capacity = 60;
+const capacity = 120;
 const json=(value,status=200)=>Response.json(value,{status,headers:{'cache-control':'no-store'}});
 const countQuery='SELECT COUNT(*) AS total FROM registrations';
 export async function registration(request,db){
@@ -22,6 +22,6 @@ export async function registration(request,db){
   const row=await db.prepare('SELECT full_name,pass_code FROM registrations WHERE email=? AND request_key=?').bind(email,key).first();
   if(row)return json({name:row.full_name,code:row.pass_code},201);
   const total=await db.prepare(countQuery).first();
-  if(total.total>=capacity)return json({error:'All 60 seats are booked.'},409);
+  if(total.total>=capacity)return json({error:'All 120 seats are booked.'},409);
   return json({error:'This email already has a registration. Check your saved workshop pass.'},409);
 }

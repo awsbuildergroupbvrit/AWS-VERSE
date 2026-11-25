@@ -46,7 +46,7 @@ This guide walks you through the 3-minute setup for **Google Sheets Registration
 ## 2. EmailJS Setup (Priority 2 — 1 Minute)
 
 1. **Create an EmailJS Account**:
-   - Sign up at [emailjs.com](https://www.emailjs.com/) (free tier includes 200 emails/month, more than enough for the 60-seat limit).
+   - Sign up at [emailjs.com](https://www.emailjs.com/) (free tier includes 200 emails/month, more than enough for the 120-seat limit).
 
 2. **Add Email Service**:
    - In the EmailJS Dashboard, go to **Email Services** > **Add New Service**.
@@ -96,7 +96,7 @@ This guide walks you through the 3-minute setup for **Google Sheets Registration
 
 ## 3. Features & Safeguards
 
-- **60 Seat Hard Cap**: The Google Apps Script automatically counts registered rows and rejects registrations once 60 seats are claimed.
+- **120 Seat Hard Cap**: The Google Apps Script automatically counts registered rows and rejects registrations once 120 seats are claimed.
 - **Deduplication**: Registrations with duplicate Roll Numbers or College Emails are rejected with an informative prompt.
 - **Fail-safe Email Dispatch**: If email delivery fails due to EmailJS quota or network restrictions, the registration still succeeds in Google Sheets and the student's confirmed pass is displayed on-screen with instructions to take a screenshot.
 - **Auto-Formatting**: Roll numbers are automatically capitalized and formatted.

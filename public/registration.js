@@ -116,8 +116,8 @@ function showPass() {
 async function refreshSeats() {
   try {
     const sheetUrl = eventSettings.googleSheetUrl || window.VITE_GOOGLE_SHEET_URL || window.NEXT_PUBLIC_GOOGLE_SHEET_URL || window.GOOGLE_SHEET_URL;
-    let remaining = 60;
-    let capacity = 60;
+    let remaining = 120;
+    let capacity = 120;
 
     if (sheetUrl && /^https:\/\/script\.google\.com\//.test(sheetUrl)) {
       try {
@@ -126,7 +126,7 @@ async function refreshSeats() {
           const data = await r.json();
           if (typeof data.remaining === 'number') {
             remaining = data.remaining;
-            capacity = data.capacity || 60;
+            capacity = data.capacity || 120;
           }
         }
       } catch {
@@ -137,14 +137,14 @@ async function refreshSeats() {
       if (r.ok) {
         const data = await r.json();
         remaining = data.remaining;
-        capacity = data.capacity || 60;
+        capacity = data.capacity || 120;
       }
     }
 
     if (availability) {
       availability.textContent = remaining > 0
         ? `${remaining} of ${capacity} seats available`
-        : 'All 60 seats are booked.';
+        : 'All 120 seats are booked.';
     }
 
     if (submitBtn) {
@@ -299,7 +299,7 @@ form.addEventListener('submit', async e => {
         throw new Error(resData.error || 'This roll number or email is already registered.');
       }
       if (resData.status === 'full') {
-        throw new Error(resData.error || 'All 60 seats are booked. Workshop is full.');
+        throw new Error(resData.error || 'All 120 seats are booked. Workshop is full.');
       }
       if (resData.status === 'error') {
         throw new Error(resData.error || 'Failed to record registration in Google Sheet.');
@@ -348,8 +348,8 @@ form.addEventListener('submit', async e => {
               year: yearOfStudy,
               section: section,
               event_name: 'AWS-VERSE',
-              event_dates: 'November 27–28, 2026 · 9:00 AM–4:30 PM',
-              venue: eventSettings.venue || 'ENL Block Seminar Hall, Ground Floor, BVRIT Narsapur'
+              event_dates: 'November 27–28, 2026 · 9:30 AM–3:30 PM',
+              venue: eventSettings.venue || 'ELN Block Seminar Hall, Ground Floor, BVRIT Narsapur'
             },
             publicKey
           );
@@ -463,8 +463,8 @@ document.querySelector('#save-pass').onclick = async () => {
   // Event Date and Venue
   g.font = '500 26px Body, Arial, sans-serif';
   g.fillStyle = '#cec5cb';
-  g.fillText('November 27–28, 2026   ·   9:00 AM – 4:30 PM', 68, 424);
-  g.fillText(eventSettings.venue || 'ENL Block Seminar Hall, Ground Floor, BVRIT Narsapur', 68, 468);
+  g.fillText('November 27–28, 2026   ·   9:30 AM – 3:30 PM', 68, 424);
+  g.fillText(eventSettings.venue || 'ELN Block Seminar Hall, Ground Floor, BVRIT Narsapur', 68, 468);
 
   // Dashed coupon tear line
   g.setLineDash([9, 9]);
@@ -483,7 +483,7 @@ document.querySelector('#save-pass').onclick = async () => {
 
   g.font = '500 20px Mono, monospace';
   g.fillStyle = '#95e6df';
-  g.fillText('PRESENT AT CHECK-IN  ·  LIMITED 60 SEATS', 580, 595);
+  g.fillText('PRESENT AT CHECK-IN  ·  LIMITED 120 SEATS', 580, 595);
 
   // Download
   const blob = await new Promise(resolve => c.toBlob(resolve));

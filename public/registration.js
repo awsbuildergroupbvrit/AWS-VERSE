@@ -5,6 +5,7 @@ const submitBtn = document.querySelector('#submit-btn');
 const submitBtnText = document.querySelector('#submit-btn-text');
 const rollInput = form.querySelector('input[name="rollNumber"]');
 const emailInput = form.querySelector('input[name="collegeEmail"]');
+const phoneInput = form.querySelector('input[name="mobileNumber"]');
 const emailHint = document.querySelector('#email-hint');
 
 let pass = null;
@@ -24,6 +25,15 @@ try {
 if (rollInput) {
   rollInput.addEventListener('input', () => {
     rollInput.value = rollInput.value.toUpperCase().replace(/\s+/g, '');
+  });
+}
+
+/**
+ * Filter phone number input to digits only
+ */
+if (phoneInput) {
+  phoneInput.addEventListener('input', () => {
+    phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 10);
   });
 }
 
@@ -181,6 +191,7 @@ form.addEventListener('submit', async e => {
   const formData = new FormData(form);
   const fullName = (formData.get('fullName') || '').toString().trim();
   const collegeEmail = (formData.get('collegeEmail') || '').toString().trim().toLowerCase();
+  const mobileNumber = (formData.get('mobileNumber') || '').toString().trim();
   const rollNumber = (formData.get('rollNumber') || '').toString().trim().toUpperCase();
   const branch = (formData.get('branch') || '').toString().trim();
   const yearOfStudy = (formData.get('yearOfStudy') || '').toString().trim();
@@ -199,6 +210,14 @@ form.addEventListener('submit', async e => {
     statusLine.textContent = 'Please enter a valid college email address.';
     statusLine.className = 'error';
     form.querySelector('input[name="collegeEmail"]').focus();
+    return;
+  }
+
+  const cleanPhone = mobileNumber.replace(/\D/g, '');
+  if (cleanPhone.length < 10) {
+    statusLine.textContent = 'Please enter a valid 10-digit mobile number.';
+    statusLine.className = 'error';
+    form.querySelector('input[name="mobileNumber"]').focus();
     return;
   }
 
@@ -244,6 +263,7 @@ form.addEventListener('submit', async e => {
     passId,
     fullName,
     collegeEmail,
+    mobileNumber: cleanPhone,
     rollNumber,
     branch,
     yearOfStudy,

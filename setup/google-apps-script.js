@@ -2,11 +2,7 @@
  * AWS-VERSE Workshop Registration - Google Apps Script
  * 
  * Paste this script into Extensions > Apps Script in your Google Sheet.
- * 
- * IMPORTANT: To allow Google to send emails:
- * 1. Select "testSendEmail" from the function dropdown at the top and click "Run".
- * 2. Click "Review permissions" -> select your Google account -> "Advanced" -> "Go to AWS-VERSE (unsafe)" -> "Allow".
- * 3. Click "Deploy" > "Manage deployments" > Edit (pencil) > New version > "Deploy".
+ * Then click "Deploy" > "Manage deployments" > Edit (pencil) > New version > "Deploy"
  */
 
 const SHEET_NAME = 'Registrations';
@@ -17,6 +13,7 @@ const HEADERS = [
   'Pass ID',
   'Full Name',
   'College Email',
+  'Mobile Number',
   'Roll Number',
   'Branch',
   'Year',
@@ -32,6 +29,7 @@ function testSendEmail() {
     passId: 'AWSV-TEST-01',
     fullName: 'Gurrala Rishikesh',
     collegeEmail: userEmail,
+    mobileNumber: '9876543210',
     rollNumber: '24211A05L4',
     branch: 'CSE',
     yearOfStudy: '3rd Year',
@@ -95,6 +93,7 @@ function doPost(e) {
     let passId = (data.passId || '').trim();
     const fullName = (data.fullName || '').trim();
     const collegeEmail = (data.collegeEmail || '').trim().toLowerCase();
+    const mobileNumber = (data.mobileNumber || '').toString().trim();
     const rollNumber = (data.rollNumber || '').trim().toUpperCase();
     const branch = (data.branch || '').trim();
     const yearOfStudy = (data.yearOfStudy || '').trim();
@@ -102,10 +101,10 @@ function doPost(e) {
     const timestamp = data.timestamp || new Date().toISOString();
 
     // Field validation
-    if (!fullName || !collegeEmail || !rollNumber || !branch || !yearOfStudy || !section) {
+    if (!fullName || !collegeEmail || !mobileNumber || !rollNumber || !branch || !yearOfStudy || !section) {
       return jsonResponse({
         status: 'error',
-        error: 'All fields (Name, Email, Roll Number, Branch, Year, Section) are required.'
+        error: 'All fields (Name, Email, Mobile Number, Roll Number, Branch, Year, Section) are required.'
       });
     }
 
@@ -123,12 +122,16 @@ function doPost(e) {
       });
     }
 
-    // Check for duplicates in existing rows
+    // Check for duplicates dynamically by header names
     if (lastRow > 1) {
-      const values = sheet.getRange(2, 1, lastRow - 1, 8).getValues();
+      const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0].map(h => (h || '').toString().trim().toLowerCase());
+      const emailIdx = headers.findIndex(h => h.includes('email'));
+      const rollIdx = headers.findIndex(h => h.includes('roll'));
+      const values = sheet.getRange(2, 1, lastRow - 1, sheet.getLastColumn()).getValues();
+
       for (let i = 0; i < values.length; i++) {
-        const rowEmail = (values[i][3] || '').toString().trim().toLowerCase();
-        const rowRoll = (values[i][4] || '').toString().trim().toUpperCase();
+        const rowEmail = (emailIdx !== -1 ? values[i][emailIdx] : values[i][3] || '').toString().trim().toLowerCase();
+        const rowRoll = (rollIdx !== -1 ? values[i][rollIdx] : values[i][5] || values[i][4] || '').toString().trim().toUpperCase();
 
         if (rowRoll === rollNumber) {
           return jsonResponse({
@@ -161,6 +164,7 @@ function doPost(e) {
       passId,
       fullName,
       collegeEmail,
+      "'" + mobileNumber,
       rollNumber,
       branch,
       yearOfStudy,
@@ -171,7 +175,8 @@ function doPost(e) {
     const newRow = sheet.getLastRow();
     sheet.getRange(newRow, 1).setNumberFormat('yyyy-mm-dd hh:mm:ss');
     sheet.getRange(newRow, 2).setFontFamily('Consolas');
-    sheet.getRange(newRow, 5).setFontFamily('Consolas');
+    sheet.getRange(newRow, 5).setNumberFormat('@'); // Text format for Mobile Number
+    sheet.getRange(newRow, 6).setFontFamily('Consolas');
 
     const newRemaining = Math.max(0, MAX_CAPACITY - (existingCount + 1));
 
@@ -183,6 +188,7 @@ function doPost(e) {
         passId: passId,
         fullName: fullName,
         collegeEmail: collegeEmail,
+        mobileNumber: mobileNumber,
         rollNumber: rollNumber,
         branch: branch,
         yearOfStudy: yearOfStudy,
@@ -201,7 +207,8 @@ function doPost(e) {
       remaining: newRemaining,
       capacity: MAX_CAPACITY,
       emailSent: emailSent,
-      mailError: mailErrorMsg
+      mailError: mailErrorMsg,
+      seatNumber: seatNumber
     });
 
   } catch (err) {
@@ -289,6 +296,22 @@ function getOrCreateSheet() {
     headerRange.setHorizontalAlignment('center');
     sheet.setFrozenRows(1);
     sheet.autoResizeColumns(1, HEADERS.length);
+  } else {
+    // Check if Mobile Number column is present
+    const lastCol = sheet.getLastColumn();
+    if (lastCol > 0) {
+      const headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+      const hasMobile = headers.some(h => (h || '').toString().toLowerCase().includes('mobile'));
+      if (!hasMobile) {
+        sheet.insertColumnBefore(5);
+        sheet.getRange(1, 5).setValue('Mobile Number')
+          .setBackground('#171115')
+          .setFontColor('#ff5360')
+          .setFontWeight('bold')
+          .setFontFamily('Arial')
+          .setHorizontalAlignment('center');
+      }
+    }
   }
 
   return sheet;

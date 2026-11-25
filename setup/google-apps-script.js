@@ -6,7 +6,7 @@
  */
 
 const SHEET_NAME = 'Registrations';
-const MAX_CAPACITY = 60;
+const MAX_CAPACITY = 120;
 
 const HEADERS = [
   'Timestamp',
@@ -111,12 +111,12 @@ function doPost(e) {
     const sheet = getOrCreateSheet();
     const lastRow = sheet.getLastRow();
 
-    // Check capacity (Header is row 1, so row 2 to 61 is 60 students)
+    // Check capacity (Header is row 1, so row 2 to 121 is 120 students)
     const existingCount = Math.max(0, lastRow - 1);
     if (existingCount >= MAX_CAPACITY) {
       return jsonResponse({
         status: 'full',
-        error: 'All 60 seats are booked. Workshop registration is now full.',
+        error: 'All 120 seats are booked. Workshop registration is now full.',
         remaining: 0,
         capacity: MAX_CAPACITY
       });
@@ -151,7 +151,7 @@ function doPost(e) {
       }
     }
 
-    // Generate official sequential Pass ID (01, 02, 03 ... 60)
+    // Generate official sequential Pass ID (01, 02, 03 ... 120)
     const seatNumber = existingCount + 1;
     const seatStr = seatNumber < 10 ? '0' + seatNumber : '' + seatNumber;
     const cleanRoll = rollNumber.replace(/[^A-Za-z0-9]/g, '').toUpperCase();
@@ -268,8 +268,8 @@ function getPassEmailHtml(info) {
     '</tr></table></td></tr></table></td></tr>' +
     '<tr><td style="padding:0 16px;"><div style="border-top:2px dashed #6f4c56;height:1px;"></div></td></tr>' +
     '<tr><td style="padding:20px 28px;background:#130a13;">' +
-    '<p style="margin:0 0 8px 0;font-size:13px;color:#fff;"><strong>Date:</strong> November 27–28, 2026 &bull; 9:00 AM – 4:30 PM</p>' +
-    '<p style="margin:0;font-size:13px;color:#fff;"><strong>Venue:</strong> ENL Block Seminar Hall, Ground Floor, BVRIT Narsapur</p></td></tr>' +
+    '<p style="margin:0 0 8px 0;font-size:13px;color:#fff;"><strong>Date:</strong> November 27–28, 2026 &bull; 9:30 AM – 3:30 PM</p>' +
+    '<p style="margin:0;font-size:13px;color:#fff;"><strong>Venue:</strong> ELN Block Seminar Hall, Ground Floor, BVRIT Narsapur</p></td></tr>' +
     '<tr><td style="padding:16px 28px;background:#1a1019;text-align:center;border-top:1px solid #2b1d24;">' +
     '<p style="margin:0;font-size:12px;color:#8a7882;">Please keep this email or your Pass ID ready on your phone at check-in on Day 1.</p></td></tr>' +
     '</table></td></tr></table></body></html>';

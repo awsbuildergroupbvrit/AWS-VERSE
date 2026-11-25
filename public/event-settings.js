@@ -1,6 +1,6 @@
 // Workshop and registration settings
 const eventSettings = {
-  venue: 'ENL Block Seminar Hall, Ground Floor, BVRIT Narsapur',
+  venue: 'ELN Block Seminar Hall, Ground Floor, BVRIT Narsapur',
   registrationUrl: '',
 
   // Priority 1: Google Apps Script Web App URL (Google Sheets integration)

@@ -270,6 +270,20 @@ function getPassEmailHtml(info) {
     '<tr><td style="padding:20px 28px;background:#130a13;">' +
     '<p style="margin:0 0 8px 0;font-size:13px;color:#fff;"><strong>Date:</strong> November 27–28, 2026 &bull; 9:30 AM – 3:30 PM</p>' +
     '<p style="margin:0;font-size:13px;color:#fff;"><strong>Venue:</strong> ELN Block Seminar Hall, Ground Floor, BVRIT Narsapur</p></td></tr>' +
+    '<tr><td style="padding:0 16px;"><div style="border-top:2px dashed #6f4c56;height:1px;"></div></td></tr>' +
+    '<!-- Integrated WhatsApp Section Inside Ticket -->' +
+    '<tr><td style="padding:22px 28px;background:#130a13;text-align:center;">' +
+    '<table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">' +
+    '<tr><td align="center">' +
+    '<p style="margin:0 0 4px 0;font-family:monospace;font-size:11px;color:#95e6df;letter-spacing:1.5px;text-transform:uppercase;font-weight:bold;">// WORKSHOP COMMUNITY</p>' +
+    '<h3 style="margin:0 0 8px 0;font-size:20px;font-weight:900;color:#ffffff;letter-spacing:-0.5px;">Join the AWS-VERSE WhatsApp Group</h3>' +
+    '<p style="margin:0 auto 14px auto;font-size:13px;line-height:1.5;color:#c4b9bf;max-width:440px;">Connect with mentors, get lab prerequisites, team announcements &amp; live workshop updates:</p>' +
+    '<div style="display:inline-block;background:#ffffff;padding:8px;border-radius:6px;border:2px solid #87505a;box-shadow:3px 3px 0 #ff4856;margin-bottom:14px;">' +
+    '<img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fchat.whatsapp.com%2FFi4cxbIMCPm8RTIjrFv7xS%3Fs%3Dsh%26p%3Da%26iam%3D2" width="160" height="160" alt="AWS-VERSE WhatsApp QR" style="display:block;border:0;">' +
+    '<span style="display:block;font-family:monospace;font-size:9px;color:#20141a;font-weight:bold;margin-top:4px;letter-spacing:0.5px;">SCAN TO JOIN</span>' +
+    '</div><br>' +
+    '<a href="https://chat.whatsapp.com/Fi4cxbIMCPm8RTIjrFv7xS?s=sh&p=a&iam=2" target="_blank" style="display:inline-block;background-color:#ff4856;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Roboto,sans-serif;font-weight:900;font-size:13px;letter-spacing:0.5px;padding:11px 24px;border-radius:4px;text-decoration:none;box-shadow:3px 3px 0 #703137;text-transform:uppercase;">JOIN WHATSAPP GROUP &rarr;</a>' +
+    '</td></tr></table></td></tr>' +
     '<tr><td style="padding:16px 28px;background:#1a1019;text-align:center;border-top:1px solid #2b1d24;">' +
     '<p style="margin:0;font-size:12px;color:#8a7882;">Please keep this email or your Pass ID ready on your phone at check-in on Day 1.</p></td></tr>' +
     '</table></td></tr></table></body></html>';
